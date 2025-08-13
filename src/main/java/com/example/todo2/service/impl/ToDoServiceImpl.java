@@ -2,9 +2,8 @@ package com.example.todo2.service.impl;
 
 import java.util.List;
 
-import jakarta.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.todo2.entity.ToDo;
 import com.example.todo2.repository.ToDoRepository;
@@ -21,13 +20,13 @@ public class ToDoServiceImpl implements ToDoService {
   }
   
   @Override
-//  @Transactional( readOnly = true )
+  @Transactional( readOnly = true )
   public List<ToDo> findAllToDo() {
     return repository.findAllOrderById();
   }
   
   @Override
-//  @Transactional(readOnly = true)
+  @Transactional(readOnly = true)
   public ToDo findByIdToDo( Integer id ) {
     return repository.findById( id ).orElse( null );
   }
